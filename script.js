@@ -37,3 +37,26 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  const titleText = "@L A G About Me page";
+  let currentTitle = "";
+  let currentIndex = 0;
+
+  function updateTitle() {
+      if (currentIndex < titleText.length) {
+          currentTitle += titleText[currentIndex];
+          document.title = currentTitle;
+          currentIndex++;
+          setTimeout(updateTitle, 200);
+      } else {
+          setTimeout(() => {
+              currentTitle = "";
+              currentIndex = 0;
+              updateTitle(); 
+          }, 1000);
+      }
+  }
+
+  updateTitle(); 
+});
