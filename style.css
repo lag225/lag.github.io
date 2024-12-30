@@ -1,16 +1,15 @@
-
 body, html {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    flex-direction: column; 
+    flex-direction: column;
 }
 
 #background-video {
@@ -24,51 +23,79 @@ body, html {
 }
 
 .about-me-box {
-    background: rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.85); 
+    padding: 50px;
+    border-radius: 25px;
     text-align: center;
-    width: 60%;
-    max-width: 600px;
+    width: 80%;
+    max-width: 700px;
+    border: 3px solid #ff0033;
+    box-shadow: 0 0 30px rgba(255, 0, 51, 0.8);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-me-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 50px rgba(255, 0, 51, 0.8);
 }
 
 .about-me-box h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
+    font-size: 50px;
+    margin-bottom: 25px;
+    font-family: 'Impact', sans-serif;
+    color: #ff0033;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 6px rgba(255, 0, 51, 0.8);
+    animation: textGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+    0% {
+        text-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff;
+    }
+    100% {
+        text-shadow: 0 0 20px #ff0033, 0 0 40px #ff0033;
+    }
 }
 
 .about-me-box p {
-    font-size: 18px;
-    margin-bottom: 20px;
+    font-size: 22px;
+    margin-bottom: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #ddd;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+    line-height: 1.6;
 }
 
 .button-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-a {
-    text-decoration: none;
+    gap: 25px;
+    margin-top: 30px;
 }
 
 button {
     display: flex;
     align-items: center;
-    background-color: #2b60aa;
+    background-color: #222;
     border: none;
     color: white;
-    padding: 10px 20px;
+    padding: 15px 30px;
     border-radius: 50px;
-    font-size: 16px;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(255, 0, 51, 0.8);
 }
 
 button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 25px rgba(255, 0, 51, 0.8);
 }
 
 button span {
@@ -80,34 +107,35 @@ button span {
 }
 
 .discord-button {
-    background: linear-gradient(135deg, #7289da, #99aab5);
+    background: linear-gradient(135deg, #3b2f6f, #99aab5);
 }
 
 button svg {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
+    filter: drop-shadow(0px 0px 5px rgba(255, 0, 51, 0.6));
 }
-
 
 .music-player-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px; 
+    margin-top: 40px;
     background: rgba(0, 0, 0, 0.7);
-    padding: 15px;
-    border-radius: 10px;
+    padding: 20px;
+    border-radius: 15px;
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
+    box-shadow: 0 0 20px rgba(255, 0, 51, 0.8);
 }
 
 #play-pause-btn {
     background-color: #ff6347;
     border: none;
     color: white;
-    padding: 12px 30px;
+    padding: 15px 35px;
     border-radius: 50px;
-    font-size: 18px;
+    font-size: 20px;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
@@ -116,14 +144,13 @@ button svg {
 
 #play-pause-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
 }
 
 #play-pause-btn svg {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
 }
-
 
 #overlay {
     position: fixed;
@@ -136,15 +163,32 @@ button svg {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    font-size: 28px;
     z-index: 1000;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+#overlay p {
+    font-size: 35px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 #main-content {
     display: none;
 }
-
 
 #youtubeVideo {
     width: 1px;
@@ -153,4 +197,89 @@ button svg {
     position: absolute;
     top: -9999px;
     left: -9999px;
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff;
+    }
+    50% {
+        text-shadow: 0 0 10px #ff99ff, 0 0 20px #ff99ff, 0 0 30px #ff99ff, 0 0 40px #ff99ff, 0 0 50px #ff99ff, 0 0 60px #ff99ff;
+    }
+}
+
+@keyframes sparkle {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5) translateY(-10px);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.5) translateY(0);
+    }
+}
+
+.lag-container {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 120px;
+    color: white;
+    text-shadow: 0 0 15px rgba(255, 0, 51, 1), 0 0 30px rgba(255, 0, 51, 0.8), 0 0 50px rgba(255, 0, 51, 0.5);
+    position: relative;
+    padding: 25px;
+    text-align: center;
+    animation: glow 2s infinite;
+    overflow: visible;
+}
+
+.lag-container span {
+    color: #ff0033;
+}
+
+.lag-container::before,
+.lag-container::after,
+.lag-container span:nth-child(1),
+.lag-container span:nth-child(2),
+.lag-container span:nth-child(3) {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: radial-gradient(circle, #ff0033 0%, #ff0066 100%);
+    border-radius: 50%;
+    animation: sparkle 2s infinite ease-in-out;
+    z-index: -1;
+}
+
+.lag-container::before {
+    top: 10%;
+    left: 20%;
+    animation-delay: 0.5s;
+}
+
+.lag-container::after {
+    top: 70%;
+    right: 25%;
+    animation-delay: 1s;
+}
+
+.lag-container span:nth-child(1) {
+    top: 20%;
+    left: 70%;
+    animation-delay: 1.5s;
+}
+
+.lag-container span:nth-child(2) {
+    bottom: 30%;
+    right: 10%;
+    animation-delay: 0.75s;
+}
+
+.lag-container span:nth-child(3) {
+    top: 50%;
+    left: 40%;
+    animation-delay: 1.25s;
 }
